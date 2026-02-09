@@ -1,20 +1,20 @@
-# include<stdio.h>
-  int main()
-{
+#include <stdio.h>
 
-    int a = 100;
-    int b = 50;
-    
-    printf("Addition is a+b =%d\n", a+b);
-        printf("Subtraction is a-b =%d\n", a-b);
-                printf("Multiplication is a*b =%d\n", a*b);
-                      printf("Division is a/b =%d\n", a/b);
-                              printf("Modulus is = %d\n", a%b);
+int main()
+ {
+    int a, b;
 
+    printf("Enter the value of a and b ");
+    scanf("%d %d", &a, &b);
 
-        
+    printf("Addition = %d\n", a + b);
 
+    printf("Subtraction = %d\n", a - b);
 
+    printf("Multiplication = %d\n", a * b);
+    printf("Division = %d\n", a / b);
 
-     return 0;
+    printf("Modulus = %d\n", a % b);
+
+    return 0;
 }
