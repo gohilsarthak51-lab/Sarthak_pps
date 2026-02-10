@@ -14,7 +14,8 @@ int main()
     printf("Multiplication = %d\n", a * b);
     printf("Division = %d\n", a / b);
 
-    printf("Modulus = %d\n", a % b);
+    printf("Modulus = %f\n", (float)(a % b));
 
     return 0;
+
 }
