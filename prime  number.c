@@ -16,8 +16,6 @@ int main() {
                
             }
         }
-
-        // If loop completes without finding factor
         printf("%d is a Prime number.\n", a);
     }
 
