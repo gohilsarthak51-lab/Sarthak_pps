@@ -1,0 +1,123 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void writeFile() {
+    FILE *fp;
+    char filename[100], text[1000];
+
+    printf("Enter the file name: ");
+    scanf("%s", filename);
+
+    fp = fopen(filename, "w");
+    if (fp == NULL) {
+        printf("Error: Cannot create or open file.\n");
+        return;
+    }
+
+    getchar();
+    printf("Enter text which you want to write:\n");
+    fgets(text, sizeof(text), stdin);
+
+    fprintf(fp, "%s", text);
+    fclose(fp);
+
+    printf("File written successfully.\n");
+}
+
+void readFile() {
+    FILE *fp;
+    char filename[100], ch;
+
+    printf("Enter the file name: ");
+    scanf("%s", filename);
+
+    fp = fopen(filename, "r");
+    if (fp == NULL) {
+        printf("Error: File does not exist or cannot be opened.\n");
+        return;
+    }
+
+    printf("\nFile contents:\n");
+    while ((ch = fgetc(fp)) != EOF) {
+        putchar(ch);
+    }
+
+    fclose(fp);
+}
+
+void appendFile() {
+    FILE *fp;
+    char filename[100], text[1000];
+
+    printf("Enter the file name: ");
+    scanf("%s", filename);
+
+    fp = fopen(filename, "a");
+    if (fp == NULL) {
+        printf("Error: Cannot open file for appending.\n");
+        return;
+    }
+
+    getchar();
+    printf("Enter text to append:\n");
+    fgets(text, sizeof(text), stdin);
+
+    fprintf(fp, "%s", text);
+    fclose(fp);
+
+    printf("Text appended successfully.\n");
+}
+
+void clearFile() {
+    FILE *fp;
+    char filename[100];
+
+    printf("Enter file name: ");
+    scanf("%s", filename);
+
+    fp = fopen(filename, "w");
+    if (fp == NULL) {
+        printf("Error: Cannot clear file.\n");
+        return;
+    }
+
+    fclose(fp);
+    printf("File contents deleted successfully.\n");
+}
+
+int main() {
+    int choice;
+
+    while (1) {
+        printf("\n--- Simple Text Editor ---\n");
+        printf("1. Write to file\n");
+        printf("2. Read file\n");
+        printf("3. Append to file\n");
+        printf("4. Delete file contents\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                writeFile();
+                break;
+            case 2:
+                readFile();
+                break;
+            case 3:
+                appendFile();
+                break;
+            case 4:
+                clearFile();
+                break;
+            case 5:
+                printf("Exiting program.\n");
+                exit(0);
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    }
+
+    return 0;
+}
