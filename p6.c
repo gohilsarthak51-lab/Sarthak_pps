@@ -12,6 +12,14 @@ struct Student {
 struct Student s[MAX];
 int count = 0;
 
+int isDuplicate(int roll) {
+    for (int i = 0; i < count; i++) {
+        if (s[i].roll == roll)
+            return 1;
+    }
+    return 0;
+}
+
 void addStudent() {
     if (count >= MAX) {
         printf("Record is full!\n");
@@ -21,7 +29,12 @@ void addStudent() {
     printf("Enter Student Roll Number: ");
     scanf("%d", &s[count].roll);
 
-    printf("EnterD Student Name: ");
+    if (isDuplicate(s[count].roll)) {
+        printf("Roll number already exists!\n");
+        return;
+    }
+
+    printf("Enter Student Name: ");
     scanf(" %[^\n]", s[count].name);
 
     printf("Enter The Grade: ");
@@ -56,7 +69,7 @@ void searchStudent() {
 
     for (int i = 0; i < count; i++) {
         if (s[i].roll == roll) {
-            printf("Record Found:\n");
+            printf("\nRecord Found:\n");
             printf("Roll: %d | Name: %s | Grade: %.2f\n",
                    s[i].roll, s[i].name, s[i].grade);
             found = 1;
